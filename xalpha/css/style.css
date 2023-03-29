@@ -93,7 +93,7 @@
     /* display: flex; */
     align-items: center;
     /* display: fixed; */
-    background-color: #b8b5b592;
+    background-color: #edecece9;
     text-align: center;
     margin: 80px auto 0;
     padding-top: 50px;
@@ -101,7 +101,7 @@
 }
 
 .leonore {
-    color: #aa00ff;
-    text-emphasis-color: #17111a;
+    color: #ed18cdda;
+    text-emphasis-color: #ed18cdda;
     text-decoration: none
 }
