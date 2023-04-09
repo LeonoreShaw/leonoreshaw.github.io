@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>关于更换Twikoo评论部署方式 - le Blog de Léonore</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="A Léonore&#039;s Website"><meta name="msapplication-TileImage" content="/img/LogoHead.webp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="A Léonore&#039;s Website"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="由于腾讯云没有了0元套餐，需要付费购买套餐才能使用。一直没管，直到云环境被隔离了，还得续费才能导出数据:)。出于尽量白嫖的原则，决定更换为Vercel部署。 【今后在中国大陆网络环境下，评论区访问将变得更为困难】  【腾讯云公告】关于云开发计费套餐升级通知：为简化预付费后付费资源包等多种使用概念，云开发将于 2022年8月上线新计费套餐，使用“基础套餐+按量付费”模式，需先购买带有一定配额的基础套"><meta property="og:type" content="blog"><meta property="og:title" content="关于更换Twikoo评论部署方式"><meta property="og:url" content="https://xxiao.org/%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%8D%A2Twikoo%E8%AF%84%E8%AE%BA%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F/"><meta property="og:site_name" content="le Blog de Léonore"><meta property="og:description" content="由于腾讯云没有了0元套餐，需要付费购买套餐才能使用。一直没管，直到云环境被隔离了，还得续费才能导出数据:)。出于尽量白嫖的原则，决定更换为Vercel部署。 【今后在中国大陆网络环境下，评论区访问将变得更为困难】  【腾讯云公告】关于云开发计费套餐升级通知：为简化预付费后付费资源包等多种使用概念，云开发将于 2022年8月上线新计费套餐，使用“基础套餐+按量付费”模式，需先购买带有一定配额的基础套"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://xxiao.org/gallery/covers/Hexo.png"><meta property="article:published_time" content="2022-09-16T16:00:00.000Z"><meta property="article:author" content="Léonore"><meta property="article:tag" content="Hexo"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/gallery/covers/Hexo.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xxiao.org/%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%8D%A2Twikoo%E8%AF%84%E8%AE%BA%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F/"},"headline":"le Blog de Léonore","image":["https://xxiao.org/gallery/covers/Hexo.png"],"datePublished":"2022-09-16T16:00:00.000Z","author":{"@type":"Person","name":"Léonore"},"description":"由于腾讯云没有了0元套餐，需要付费购买套餐才能使用。一直没管，直到云环境被隔离了，还得续费才能导出数据:)。出于尽量白嫖的原则，决定更换为Vercel部署。 【今后在中国大陆网络环境下，评论区访问将变得更为困难】  【腾讯云公告】关于云开发计费套餐升级通知：为简化预付费后付费资源包等多种使用概念，云开发将于 2022年8月上线新计费套餐，使用“基础套餐+按量付费”模式，需先购买带有一定配额的基础套"}</script><link rel="canonical" href="https://xxiao.org/%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%8D%A2Twikoo%E8%AF%84%E8%AE%BA%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F/"><link rel="icon" href="/img/LogoHead.webp"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.2"></head><body class="is-2-column"><script type="text/javascript" src="/js/dark.js"></script><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/"><img src="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/about/">About</a></div><div class="navbar-end"><a class="navbar-item dark" id="dark-nav" title="Dark Mode" href="javascript:;"><i class="fas fa-moon" id="dark-icon"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/leonoreshaw/leonoreshaw.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="controller"></div><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/gallery/covers/Hexo.png" alt="关于更换Twikoo评论部署方式"><img class="fill_dark" src="/gallery/covers/Hexo.png" alt="关于更换Twikoo评论部署方式"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item create-data"><i class="far fa-calendar-alt">&nbsp;&nbsp;</i>Posted&nbsp;<time dateTime="2022-09-16T16:00:00.000Z" title="2022-09-16T16:00:00.000Z">2022-09-17</time></span><span class="level-item cate"><i class="far fa-folder-open">  </i><a class="link-muted" href="/categories/Blog/">Blog</a></span><span class="level-item read-time"><i class="far fa-clock">  </i>6 minutes read (About 872 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">关于更换Twikoo评论部署方式</h1><div class="content"><p>由于腾讯云没有了0元套餐，需要付费购买套餐才能使用。一直没管，直到云环境被隔离了，还得续费才能导出数据:)。出于尽量白嫖的原则，决定更换为Vercel部署。</p>
+<p><del><strong>【今后在中国大陆网络环境下，评论区访问将变得更为困难】</strong></del></p>
+<blockquote>
+<h6 id="【腾讯云公告】关于云开发计费套餐升级通知："><a href="#【腾讯云公告】关于云开发计费套餐升级通知：" class="headerlink" title="【腾讯云公告】关于云开发计费套餐升级通知："></a>【腾讯云公告】关于云开发计费套餐升级通知：</h6><p>为简化预付费后付费资源包等多种使用概念，云开发将于 2022年8月上线新计费套餐，使用“基础套餐+按量付费”模式，需先购买带有一定配额的基础套餐，超出配额部分按使用量付费，<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/876/75213">价格文档</a></p>
+<ul>
+<li>正在享受免费版和按量付费的用户，有超过1个月的操作缓冲期去升级切换新计费套餐。</li>
+<li>其他预付费用户在原套餐到期前，您的套餐权益将不变，可正常使用直到原套餐到期。</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Vercel-部署"><a href="#Vercel-部署" class="headerlink" title="Vercel 部署"></a>Vercel 部署</h1><blockquote>
+<p>注意</p>
+<p>Vercel 部署的环境需配合 1.4.0 以上版本的 twikoo.js 使用</p>
+</blockquote>
+<ol>
+<li>申请 <a target="_blank" rel="noopener" href="https://www.mongodb.com/cloud/atlas/register">MongoDB</a> 账号</li>
+<li>创建免费 MongoDB 数据库，区域推荐选择 <code>AWS / N. Virginia (us-east-1)</code></li>
+<li>在 Clusters 页面点击 CONNECT，按步骤设置允许所有 IP 地址的连接（<a target="_blank" rel="noopener" href="https://vercel.com/support/articles/how-to-allowlist-deployment-ip-address">为什么？</a>），创建数据库用户，并记录数据库连接字符串，请将连接字符串中的 <code>&lt;password&gt;</code> 修改为数据库密码</li>
+<li>申请 <a target="_blank" rel="noopener" href="https://vercel.com/signup">Vercel</a> 账号</li>
+<li>点击以下按钮将 Twikoo 一键部署到 Vercel<br><a target="_blank" rel="noopener" href="https://vercel.com/import/project?template=https://github.com/imaegoo/twikoo/tree/main/src/server/vercel-min"><img src="https://vercel.com/button" alt="img"></a></li>
+<li>进入 Settings - Environment Variables，添加环境变量 <code>MONGODB_URI</code>，值为第 3 步的数据库连接字符串</li>
+<li>进入 Deployments , 然后在任意一项后面点击更多（三个点） , 然后点击Redeploy , 最后点击下面的Redeploy</li>
+<li>进入 Overview，点击 Domains 下方的链接，如果环境配置正确，可以看到 “Twikoo 云函数运行正常” 的提示</li>
+<li>Vercel Domains（包含 <code>https://</code> 前缀，例如 <code>https://xxx.vercel.app</code>）即为您的环境 id</li>
+</ol>
+<h1 id="2023-03-31更新"><a href="#2023-03-31更新" class="headerlink" title="2023-03-31更新"></a>2023-03-31更新</h1><p>今天突然看到有<a target="_blank" rel="noopener" href="https://www.nickxu.top/2022/09/11/%E3%80%8ETwikoo%E3%80%8F%E8%A7%A3%E5%86%B3-Vercel-app-%E5%9C%A8%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E5%AF%BC%E8%87%B4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">『Twikoo』解决 Vercel.app 在国内被墙导致无法使用的问题</a>，其实早该想到。</p>
+<p>遂使用新域名的子域名<code>twikoo.xxiao.org</code>解决了中国大陆网络环境下无法访问评论区的问题。</p>
+<h2 id="关于Twikoo更新"><a href="#关于Twikoo更新" class="headerlink" title="关于Twikoo更新"></a>关于Twikoo更新</h2><ol>
+<li>前往GitHub项目<a target="_blank" rel="noopener" href="https://github.com/LeonoreShaw/twikoo-api/blob/main/package.json%E4%BF%AE%E6%94%B9%E4%B8%BA%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E3%80%82%E5%B0%86">https://github.com/LeonoreShaw/twikoo-api/blob/main/package.json修改为指定版本。将</a> <code>&quot;twikoo-vercel&quot;: &quot;x.x.x&quot;</code> 其中的版本号修改为最新版本号。点击 Commit changes。部署会自动触发，可以回到 <a target="_blank" rel="noopener" href="https://vercel.com/dashboard">Vercel 仪表板</a>，查看部署状态。</li>
+<li>本地修改<code>./_config.candy.yml</code>中的<code>jsUrl: https://cdn.staticfile.org/twikoo/1.6.11/twikoo.all.min.js</code>为指定版本。</li>
+<li>本地修改<code>./themes/candy/layout/comment/twikoo.jsx</code>中的<code>jsUrl: &#39;https://cdn.staticfile.org/twikoo/1.6.11/twikoo.all.min.js&#39;,</code>为指定版本。</li>
+<li>执行命令（进入<code>Blog</code>根目录开启<code>PowerShell</code>）</li>
+</ol>
+<figure class="highlight shell"><figcaption><span>PowerShell</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></div><div class="article-licensing box"><div class="licensing-title"><p>关于更换Twikoo评论部署方式</p><p><a href="https://xxiao.org/关于更换Twikoo评论部署方式/">https://xxiao.org/关于更换Twikoo评论部署方式/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Léonore</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-09-17</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><a class="link-muted mr-2" rel="tag" href="/tags/Hexo/">Hexo</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/img/Wechat.webp" alt="Wechat"></span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/img/Alipay.webp" alt="Alipay"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/BuildTrojannodewithVultrVPS/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Build Trojan node with Vultr VPS</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Buildvmess+ws+tlsNodewithVultrVPS/"><span class="level-item">Build vmess+ws+tls node with Vultr VPS</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.staticfile.org/twikoo/1.6.11/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'https://twikoo.xxiao.org/',
+      onCommentLoaded: function(){
+        console.log('评论加载完成');
+        var tkImgs = document.querySelectorAll(".tk-content img")
+        tkImgs.forEach(tkImg => {
+        tkImg.style.setProperty("cursor","zoom-in");
+        tkImg.addEventListener('click', function(){
+          if(tkImg.style.getPropertyValue("cursor") == "zoom-in"){
+            tkImg.style.setProperty("max-width", "100%", "important")
+            tkImg.style.setProperty("max-height", "100%", "important")
+            tkImg.style.setProperty("cursor","zoom-out")
+          }
+          else{
+            tkImg.style.removeProperty("max-width")
+            tkImg.style.removeProperty("max-height")
+            tkImg.style.setProperty("cursor","zoom-in")
+          }
+          })
+        });
+      }});</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#【腾讯云公告】关于云开发计费套餐升级通知："><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">【腾讯云公告】关于云开发计费套餐升级通知：</span></span></a></li></ul></ul><li><a class="level is-mobile" href="#Vercel-部署"><span class="level-left"><span class="level-item">2</span><span class="level-item">Vercel 部署</span></span></a></li><li><a class="level is-mobile" href="#2023-03-31更新"><span class="level-left"><span class="level-item">3</span><span class="level-item">2023-03-31更新</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#关于Twikoo更新"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">关于Twikoo更新</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2023 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a>.<br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.<br></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/leonoreshaw/leonoreshaw.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

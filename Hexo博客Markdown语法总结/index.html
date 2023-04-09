@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo博客Markdown语法总结 - le Blog de Léonore</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="A Léonore&#039;s Website"><meta name="msapplication-TileImage" content="/img/LogoHead.webp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="A Léonore&#039;s Website"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="用Hexo+Github Pages搭建了个人网站，记录一下写作常用的博客语法。 公式：$$\hat{x}_k&amp;#x3D;\hat{x}_k^-+K_t\left(y_k\right)$$"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo博客Markdown语法总结"><meta property="og:url" content="https://xxiao.org/Hexo%E5%8D%9A%E5%AE%A2Markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="le Blog de Léonore"><meta property="og:description" content="用Hexo+Github Pages搭建了个人网站，记录一下写作常用的博客语法。 公式：$$\hat{x}_k&amp;#x3D;\hat{x}_k^-+K_t\left(y_k\right)$$"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://xxiao.org/gallery/covers/Hexo.png"><meta property="article:published_time" content="2021-06-14T16:00:00.000Z"><meta property="article:author" content="Léonore"><meta property="article:tag" content="Hexo"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/gallery/covers/Hexo.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xxiao.org/Hexo%E5%8D%9A%E5%AE%A2Markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"},"headline":"le Blog de Léonore","image":["https://xxiao.org/gallery/covers/Hexo.png"],"datePublished":"2021-06-14T16:00:00.000Z","author":{"@type":"Person","name":"Léonore"},"description":"用Hexo+Github Pages搭建了个人网站，记录一下写作常用的博客语法。 公式：$$\\hat{x}_k&#x3D;\\hat{x}_k^-+K_t\\left(y_k\\right)$$"}</script><link rel="canonical" href="https://xxiao.org/Hexo%E5%8D%9A%E5%AE%A2Markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"><link rel="icon" href="/img/LogoHead.webp"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.2"></head><body class="is-2-column"><script type="text/javascript" src="/js/dark.js"></script><nav class="navbar navbar-main"><div class="container"><div class="navbar-menu"><a class="navbar-item navbar-logo" href="/"><img src="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/about/">About</a></div><div class="navbar-end"><a class="navbar-item dark" id="dark-nav" title="Dark Mode" href="javascript:;"><i class="fas fa-moon" id="dark-icon"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/leonoreshaw/leonoreshaw.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="controller"></div><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/gallery/covers/Hexo.png" alt="Hexo博客Markdown语法总结"><img class="fill_dark" src="/gallery/covers/Hexo.png" alt="Hexo博客Markdown语法总结"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item create-data"><i class="far fa-calendar-alt">&nbsp;&nbsp;</i>Posted&nbsp;<time dateTime="2021-06-14T16:00:00.000Z" title="2021-06-14T16:00:00.000Z">2021-06-15</time></span><span class="level-item cate"><i class="far fa-folder-open">  </i><a class="link-muted" href="/categories/Blog/">Blog</a></span><span class="level-item read-time"><i class="far fa-clock">  </i>15 minutes read (About 2190 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Hexo博客Markdown语法总结</h1><div class="content"><p>用Hexo+Github Pages搭建了个人网站，记录一下写作常用的博客语法。</p>
+<p>公式：<br>$$<br>\hat{x}_k=\hat{x}_k^-+K_t\left(y_k\right)<br>$$</p>
+<span id="more"></span>
+
+<h1 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h1><h2 id="常用小结"><a href="#常用小结" class="headerlink" title="常用小结"></a>常用小结</h2><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>正常使用LaTeX语法。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>使用<code>codeblock</code></li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock _.compact la<span class="symbol">ng:js</span> ht<span class="symbol">tp:</span>//underscorejs.org/#compact Underscore.js %&#125;</span><br><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, &#x27;&#x27;, <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight excel"><figcaption><span>_.compact js</span><a target="_blank" rel="noopener" href="http://underscorejs.org/#compact">Underscore.js</a></figcaption><table><tr><td class="code"><pre><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, &#x27;&#x27;, <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用三个反引号</li>
+</ul>
+<p> <code>[language] [title] [url] [link text]  code snippet </code></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>在文章中插入指定大小的图片。</p>
+<p><code>&#123;% img [class names] /path/to/image [width] [height] '"title text" "alt text"' %&#125;</code><br><a href="https://xxiao.org" target="_blank"><br>    <img src="/images/logo.png" width="25%" title="title" alt="alt"><br></a></p>
+<figure class="highlight html"><figcaption><span>链接示例</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://xxiao.org&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/images/logo.png&quot;</span> <span class="attr">width</span>=<span class="string">&quot;25%&quot;</span> <span class="attr">title</span>=<span class="string">&quot;title&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;alt&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>首选</strong>：img标签</p>
+<img src="/images/logo.png" width="5%" title="title" alt="alt">
+
+<figure class="highlight routeros"><figcaption><span>图片示例</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;/images/logo.png&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;25%&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;title&quot;</span> <span class="attribute">alt</span>=<span class="string">&quot;alt&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><figcaption><span>图片示例.html</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/images/logo.png&quot;</span> <span class="attr">width</span>=<span class="string">&quot;25%&quot;</span> <span class="attr">title</span>=<span class="string">&quot;title&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;alt&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其他样式</p>
+<img src="/images/logo.png" style="zoom: 25%" >
+
+
+<p><img src="/images/logo.png" alt="示例的Logo图片"></p>
+<img src="/images/logo.png" class="[a]" title="[50] [50] " alt="这是一张LOGO图片">
+
+<h3 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h3><p>在文章中插入 Youtube 视频。</p>
+<p><code>&#123;% youtube video_id [type] [cookie] %&#125;</code></p>
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><p><strong>视频</strong></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/h8DLofLM7No">Taylor Swift - Lavender Haze (Official Music Video)</a></p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/h8DLofLM7No" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<br>
+<br>
+
+<p><strong>播放列表</strong></p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?list=PL9hW1uS6HUfscJ9DHkOSoOX45MjXduUxo" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<br>
+<br>
+
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/@BLACKPINK">BLACKPINK</a></p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_k5p8qtearzZaylUDbCQoTy61ot6_Vf2bA" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<br>
+<br>
+
+<h3 id="Bilibili"><a href="#Bilibili" class="headerlink" title="Bilibili"></a>Bilibili</h3><p>插入Bilibili视频</p>
+<br>
+
+<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=82766716&bvid=BV1FJ411V7gy&cid=147308234&page=1&high_quality=1" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+<br>
+
+<h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><br>
+
+<iframe src="https://music.163.com/outchain/player?type=2&id=2025533834&auto=0&height=66" width="marginwidth&#x3D;0" height="marginheight&#x3D;0" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+<hr>
+<hr>
+<br>
+<br>
+<br>
+
+<p>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件。</p>
+<p>虽然你可以使用任何格式书写你的文章，但是标签插件永远可用，且语法也都是一致的。</p>
+<p><em>Tag plugins should not be wrapped inside Markdown syntax, e.g. <code>[](&#123;% post_path lorem-ipsum %&#125;)</code> is not supported.</em></p>
+<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
+<p><strong>别号：</strong> quote</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> <span class="selector-attr">[author]</span> <span class="selector-attr">[link]</span> <span class="selector-attr">[source_link_title]</span> %&#125;</span><br><span class="line"><span class="attribute">content</span></span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>content</p>
+<footer><strong>[author] [link] [source_link_title]</strong></footer></blockquote>
+
+
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p><strong>没有提供参数，则只输出普通的 blockquote</strong></p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">blockquote</span> %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;% <span class="name">endblockquote</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+
+<p><strong>引用书上的句子</strong></p>
+<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
+
+
+<p><strong>引用 Twitter</strong></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote @DevDocs https:<span class="regexp">//</span>twitter.com<span class="regexp">/devdocs/</span>status/<span class="number">356095192085962752</span> %&#125;</span><br><span class="line">NEW: DevDocs now comes with syntax highlighting. http:<span class="regexp">//</span>devdocs.io</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a target="_blank" rel="noopener" href="http://devdocs.io/">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a target="_blank" rel="noopener" href="https://twitter.com/devdocs/status/356095192085962752">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+
+
+<p><strong>引用网络上的文章</strong></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote Seth Godin http:<span class="regexp">//</span>sethgodin.typepad.com<span class="regexp">/seths_blog/</span><span class="number">2009</span><span class="regexp">/07/</span>welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span><br><span class="line">Every interaction is both precious and an opportunity to delight.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a target="_blank" rel="noopener" href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
+
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>在文章中插入代码。</p>
+<p><strong>别名：</strong> code</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock <span class="selector-attr">[lang:language]</span> <span class="selector-attr">[title]</span> <span class="selector-attr">[url]</span> <span class="selector-attr">[link text]</span> %&#125;</span><br><span class="line"><span class="selector-tag">code</span> snippet</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><figcaption><span>demo.py</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Fun</span>:</span><br><span class="line">  a=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>以 <code>option:value</code> 的格式指定额外选项，例如：<code>line_number:false first_line:5</code>。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><strong>普通的代码块</strong></p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">codeblock</span> %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">alert(&#x27;Hello World!&#x27;);</span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;% <span class="name">endcodeblock</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">alert</span>(<span class="string">&#x27;Hello World!&#x27;</span>);</span></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>指定语言</strong></p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">codeblock</span> lang:objc %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">[rectangle setX: 10 y: 10 width: 20 height: 20];</span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;% <span class="name">endcodeblock</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>附加说明</strong></p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock <span class="built_in">Array</span>.<span class="built_in">map</span> %&#125;</span><br><span class="line"><span class="built_in">array</span>.<span class="built_in">map</span>(callback[, thisArg])</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><figcaption><span>Array.map</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>.<span class="built_in">map</span>(callback[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p><strong>附加说明和网址</strong></p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock _.compact ht<span class="symbol">tp:</span>//underscorejs.org/#compact Underscore.js %&#125;</span><br><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, &#x27;&#x27;, <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight excel"><figcaption><span>_.compact</span><a target="_blank" rel="noopener" href="http://underscorejs.org/#compact">Underscore.js</a></figcaption><table><tr><td class="code"><pre><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, &#x27;&#x27;, <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h2><p>另一种形式的代码块，不同的是它使用三个反引号来包裹。</p>
+<p> <code>[language] [title] [url] [link text]  code snippet </code></p>
+<h2 id="Pull-Quote"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote</h2><p>在文章中插入 Pull quote。</p>
+<blockquote class="pullquote [class]"><p>This is a Pull quote</p>
+</blockquote>
+
+
+
+
+<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><p>在文章中嵌入 Gist。</p>
+<p><code>&#123;% gist gist_id [filename] %&#125;</code></p>
+<figure class="highlight twig"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;%</span> <span class="name">gist</span> <span class="number">0358</span>ce<span class="number">6</span>eb<span class="number">43</span>ef<span class="number">15</span>f<span class="number">853</span>a [filename] <span class="template-tag">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>在文章中插入 iframe，适用于视频、音频等。</p>
+<p><code>&#123;% iframe url [width] [height] %&#125;</code></p>
+<h3 id="YouTube视频"><a href="#YouTube视频" class="headerlink" title="YouTube视频"></a>YouTube视频</h3><iframe src="https://www.youtube.com/embed/bwmSjveL3Lc" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+<h3 id="Bilibili视频"><a href="#Bilibili视频" class="headerlink" title="Bilibili视频"></a>Bilibili视频</h3><figure class="highlight twig"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;%</span> <span class="name">if</span>rame https://www.bilibili.com/blackboard/html<span class="number">5</span>mobileplayer.html?aid=<span class="number">82766716</span>&amp;bvid=BV<span class="number">1</span>FJ<span class="number">411</span>V<span class="number">7</span>gy&amp;cid=<span class="number">147308234</span>&amp;page=<span class="number">1</span>&amp;high_quality=<span class="number">1</span> <span class="template-tag">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>是否自动播放(默认否)：autoplay<br>默认弹幕开关(默认开启)：danmaku<br>是否默认静音(默认否)：muted<br>一键静音按钮是否显示(默认不显示)：hasMuteButton<br>视频封面下方是都显示播放量弹幕量等信息(默认显示)：hideCoverInfo<br>是否隐藏弹幕按钮（默认不隐藏）：hideDanmakuButton<br>是否隐藏全屏按钮(默认显示)：noFullScreenButton<br>是否开始记忆播放(默认开启)：fjw<br>默认开始时间(单位秒，默认0)：t<br>是否显示高清(默认否)：highQuality（无用的，因为除了参数外它还判断了网址是否来自bilibili）</p>
+<br>
+
+<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=82766716&bvid=BV1FJ411V7gy&cid=147308234&page=1&high_quality=1" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+
+
+<h3 id="网易云音乐-1"><a href="#网易云音乐-1" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><p>单曲</p>
+<iframe src="https://music.163.com/outchain/player?type=2&id=2025533834&auto=0&height=66" width="marginwidth&#x3D;0" height="marginheight&#x3D;0" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<p>歌单</p>
+<iframe src="https://music.163.com/outchain/player?type=0&id=360062344&auto=0&height=100" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+<h3 id="Spotify（试听）"><a href="#Spotify（试听）" class="headerlink" title="Spotify（试听）"></a>Spotify（试听）</h3><iframe src="https://open.spotify.com/embed/track/6megNXGjmim4OitjZnIn9v" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<br>
+
+<br>
+
+<h3 id="QQ音乐（失败）"><a href="#QQ音乐（失败）" class="headerlink" title="QQ音乐（失败）"></a>QQ音乐（失败）</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&#123;% iframe https:<span class="regexp">//i</span>.y.qq.com<span class="regexp">/v8/</span>playsong.html?songid=<span class="number">357531938</span>&amp;songtype=<span class="number">0</span> %&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>在文章中插入指定大小的图片。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&#123;% img [<span class="keyword">class</span> <span class="symbol">names</span>] /<span class="symbol">path</span>/<span class="symbol">to</span>/<span class="symbol">image</span> [<span class="symbol">width</span>] [<span class="symbol">height</span>] &#x27;&quot;<span class="symbol">title</span> <span class="symbol">text</span>&quot; &quot;<span class="symbol">alt</span> <span class="symbol">text</span>&quot;&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">![图片](<span class="regexp">/images/</span><span class="number">1.</span>png)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight twig"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;%</span> <span class="name">img</span> [a] /images/<span class="number">1</span>.png [<span class="number">50</span>] [<span class="number">50</span>] <span class="string">&#x27;&quot;这是一张图片&quot; &quot;无图片时的替代文字&quot;&#x27;</span> <span class="template-tag">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p>在文章中插入链接，并自动给外部链接添加 <code>target=&quot;_blank&quot;</code> 属性。</p>
+<a href="" title="" target="">text url [external] [title]</a>
+
+
+<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><p>插入 <code>source/downloads/code</code> 文件夹内的代码文件。<code>source/downloads/code</code> 不是固定的，取决于你在配置文件中 <code>code_dir</code> 的配置。</p>
+
+
+
+<h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h3><p><strong>嵌入 test.js 文件全文</strong></p>
+
+
+
+<p><strong>只嵌入第 3 行</strong></p>
+
+
+
+<p><strong>嵌入第 5 行至第 8 行</strong></p>
+
+
+
+<p><strong>嵌入第 5 行至文件结束</strong></p>
+
+
+
+<p><strong>嵌入第 1 行至第 8 行</strong></p>
+
+
+
+<h2 id="Youtube-1"><a href="#Youtube-1" class="headerlink" title="Youtube"></a>Youtube</h2><p>在文章中插入 Youtube 视频。</p>
+<p><code>&#123;% youtube video_id [type] [cookie] %&#125;</code></p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><p><strong>视频</strong></p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/kjVp_xr0WR0" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<br>
+
+<br>
+
+
+<p><strong>播放列表</strong></p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?list=PL9hW1uS6HUfscJ9DHkOSoOX45MjXduUxo" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<br>
+
+<br>
+
+
+<p><strong>隐私模式</strong></p>
+<p>禁止 YouTube cookie</p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_k5p8qtearzZaylUDbCQoTy61ot6_Vf2bA" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+
+<h2 id="Vimeo"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo</h2><p>在文章中插入 Vimeo 视频。</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">vimeo</span> video_id %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<div class="video-container"><iframe src="https://player.vimeo.com/video/303299032" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+
+<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
+
+<a href="#">Post not found: filename [title] [escape]</a>
+
+
+<p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
+<p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 <code>how-to-bake-a-cake.md</code> 的文章文件即可。即使这个文件位于站点文件夹的 <code>source/posts/2015-02-my-family-holiday</code> 目录下、或者文章的永久链接是 <code>2018/en/how-to-bake-a-cake</code>，都没有影响。</p>
+<p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
+<p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用<code>escape</code>选项，禁止对特殊字符进行转义。</p>
+<p>链接使用文章标题</p>
+<a href="#">Post not found: hexo-3-8-released</a>
+
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">Hexo 3.8.0 Released</a></p>
+<p>链接使用自定义文字</p>
+<a href="#">Post not found: hexo-3-8-released 通往文章的链接</a>
+
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">通往文章的链接</a></p>
+<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><p>引用文章的资源，与 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders">资源文件夹</a> 一起使用。</p>
+
+
+
+
+<h3 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h3><p><em>hexo-renderer-marked 3.1.0+ 可以（可选）自动解析图片的文章路径，参考 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders#%E4%BD%BF%E7%94%A8-Markdown-%E5%B5%8C%E5%85%A5%E5%9B%BE%E7%89%87">本节</a> 如何启用它。</em></p>
+<p>“foo.jpg” 位于 <code>http://example.com/2020/01/02/hello/foo.jpg</code>。</p>
+<h4 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h4>
+
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h4>
+
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span> <span class="attribute">class</span>=<span class="string">&quot;post-image&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h4>
+
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;lorem ipsum&quot;</span> <span class="attribute">alt</span>=<span class="string">&quot;dolor&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Raw"><a href="#Raw" class="headerlink" title="Raw"></a>Raw</h2><p>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。</p>
+
+content
+
+
+<h2 id="文章摘要和截断"><a href="#文章摘要和截断" class="headerlink" title="文章摘要和截断"></a>文章摘要和截断</h2><p>在文章中使用 <code>&lt;!-- more --&gt;</code>，那么 <code>&lt;!-- more --&gt;</code> 之前的文字将会被视为摘要。首页中将只出现这部分文字，同时这部分文字也会出现在正文之中。</p>
+<p>例如：</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>首页中将只会出现</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>正文中则会出现</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>注意，摘要可能会被 Front Matter 中的 <code>excerpt</code> 覆盖。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Hexo博客Markdown语法总结</p><p><a href="https://xxiao.org/Hexo博客Markdown语法总结/">https://xxiao.org/Hexo博客Markdown语法总结/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Léonore</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-06-15</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><a class="link-muted mr-2" rel="tag" href="/tags/Hexo/">Hexo</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/img/Wechat.webp" alt="Wechat"></span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/img/Alipay.webp" alt="Alipay"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Icarus---aGorgeousHexoTheme/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Icarus - a Gorgeous Hexo Theme</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/StartfromGitHub/"><span class="level-item">Start from GitHub</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.staticfile.org/twikoo/1.6.11/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'https://twikoo.xxiao.org/',
+      onCommentLoaded: function(){
+        console.log('评论加载完成');
+        var tkImgs = document.querySelectorAll(".tk-content img")
+        tkImgs.forEach(tkImg => {
+        tkImg.style.setProperty("cursor","zoom-in");
+        tkImg.addEventListener('click', function(){
+          if(tkImg.style.getPropertyValue("cursor") == "zoom-in"){
+            tkImg.style.setProperty("max-width", "100%", "important")
+            tkImg.style.setProperty("max-height", "100%", "important")
+            tkImg.style.setProperty("cursor","zoom-out")
+          }
+          else{
+            tkImg.style.removeProperty("max-width")
+            tkImg.style.removeProperty("max-height")
+            tkImg.style.setProperty("cursor","zoom-in")
+          }
+          })
+        });
+      }});</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#标签插件（Tag-Plugins）"><span class="level-left"><span class="level-item">1</span><span class="level-item">标签插件（Tag Plugins）</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#常用小结"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">常用小结</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#公式"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">公式</span></span></a></li><li><a class="level is-mobile" href="#代码"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">代码</span></span></a></li><li><a class="level is-mobile" href="#图片"><span class="level-left"><span class="level-item">1.1.3</span><span class="level-item">图片</span></span></a></li><li><a class="level is-mobile" href="#Youtube"><span class="level-left"><span class="level-item">1.1.4</span><span class="level-item">Youtube</span></span></a></li><li><a class="level is-mobile" href="#Bilibili"><span class="level-left"><span class="level-item">1.1.5</span><span class="level-item">Bilibili</span></span></a></li><li><a class="level is-mobile" href="#网易云音乐"><span class="level-left"><span class="level-item">1.1.6</span><span class="level-item">网易云音乐</span></span></a></li></ul></li><li><a class="level is-mobile" href="#引用块"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">引用块</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#样例"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">样例</span></span></a></li></ul></li><li><a class="level is-mobile" href="#代码块"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">代码块</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#示例"><span class="level-left"><span class="level-item">1.3.1</span><span class="level-item">示例</span></span></a></li></ul></li><li><a class="level is-mobile" href="#反引号代码块"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">反引号代码块</span></span></a></li><li><a class="level is-mobile" href="#Pull-Quote"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">Pull Quote</span></span></a></li><li><a class="level is-mobile" href="#Gist"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">Gist</span></span></a></li><li><a class="level is-mobile" href="#iframe"><span class="level-left"><span class="level-item">1.7</span><span class="level-item">iframe</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#YouTube视频"><span class="level-left"><span class="level-item">1.7.1</span><span class="level-item">YouTube视频</span></span></a></li><li><a class="level is-mobile" href="#Bilibili视频"><span class="level-left"><span class="level-item">1.7.2</span><span class="level-item">Bilibili视频</span></span></a></li><li><a class="level is-mobile" href="#网易云音乐-1"><span class="level-left"><span class="level-item">1.7.3</span><span class="level-item">网易云音乐</span></span></a></li><li><a class="level is-mobile" href="#Spotify（试听）"><span class="level-left"><span class="level-item">1.7.4</span><span class="level-item">Spotify（试听）</span></span></a></li><li><a class="level is-mobile" href="#QQ音乐（失败）"><span class="level-left"><span class="level-item">1.7.5</span><span class="level-item">QQ音乐（失败）</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Image"><span class="level-left"><span class="level-item">1.8</span><span class="level-item">Image</span></span></a></li><li><a class="level is-mobile" href="#Link"><span class="level-left"><span class="level-item">1.9</span><span class="level-item">Link</span></span></a></li><li><a class="level is-mobile" href="#Include-Code"><span class="level-left"><span class="level-item">1.10</span><span class="level-item">Include Code</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#样例-1"><span class="level-left"><span class="level-item">1.10.1</span><span class="level-item">样例</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Youtube-1"><span class="level-left"><span class="level-item">1.11</span><span class="level-item">Youtube</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Examples-1"><span class="level-left"><span class="level-item">1.11.1</span><span class="level-item">Examples</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Vimeo"><span class="level-left"><span class="level-item">1.12</span><span class="level-item">Vimeo</span></span></a></li><li><a class="level is-mobile" href="#引用文章"><span class="level-left"><span class="level-item">1.13</span><span class="level-item">引用文章</span></span></a></li><li><a class="level is-mobile" href="#引用资源"><span class="level-left"><span class="level-item">1.14</span><span class="level-item">引用资源</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#嵌入图片"><span class="level-left"><span class="level-item">1.14.1</span><span class="level-item">嵌入图片</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Raw"><span class="level-left"><span class="level-item">1.15</span><span class="level-item">Raw</span></span></a></li><li><a class="level is-mobile" href="#文章摘要和截断"><span class="level-left"><span class="level-item">1.16</span><span class="level-item">文章摘要和截断</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2023 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a>.<br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.<br></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/leonoreshaw/leonoreshaw.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
