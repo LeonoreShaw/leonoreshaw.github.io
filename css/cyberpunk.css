@@ -12040,9 +12040,14 @@ figure.highlight .section {
   line-height: inherit;
 }
 .MathJax,
+.MathJax_Display,
+.MJXc-display,
+.MathJax_SVG_Display,
 .katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-top: 1em !important;
+  margin-top: -1em !important;
 }
 .katex {
   white-space: nowrap;
