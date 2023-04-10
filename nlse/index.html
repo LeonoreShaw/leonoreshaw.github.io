@@ -18,7 +18,7 @@
 <p>因此需要先在时域计算SPM的影响，再通过傅里叶变换到频域，计算GVD和衰减的影响 ，最后通过傅里叶逆变换回时域。</p>
 <p>$$<br>FFT{e^{i\gamma|A(T, z)|^2\Delta z}A(T, z)}<br>$$</p>
 <p>$$<br>iFFT{e^{i\frac{\beta_2}{2}(\omega-\omega_0)^2\Delta z-\frac{\alpha}{2}\Delta z}}<br>$$</p>
-<p>]<br>$$<br>iFFT{(e^{i\frac{\beta_2}{2}(\omega-\omega_0)^2\Delta z-\frac{\alpha}{2}\Delta z})FFT{e^{i\gamma|A(T, z)|^2\Delta z}A(T, z)}}<br>$$</p>
+<p>$$<br>iFFT{(e^{i\frac{\beta_2}{2}(\omega-\omega_0)^2\Delta z-\frac{\alpha}{2}\Delta z})FFT{e^{i\gamma|A(T, z)|^2\Delta z}A(T, z)}}<br>$$</p>
 <h1 id="结果展示（多图预警）"><a href="#结果展示（多图预警）" class="headerlink" title="结果展示（多图预警）"></a>结果展示（多图预警）</h1><p>分别展示只考虑衰减、色散和自相位调制对脉冲的影响，最后展示共同作用的结果。</p>
 <h2 id="只考虑衰减的影响"><a href="#只考虑衰减的影响" class="headerlink" title="只考虑衰减的影响"></a>只考虑衰减的影响</h2><p> 通常光纤的衰减为0.2 dB/km@1550nm。以下结果显示了输入高斯脉冲进入只有衰减效应的1km光纤后在时域上输出脉冲的功率变化。</p>
 <img src="/images/nlse/loss_only.png" width="80%" title="【时域】只考虑衰减的初始脉冲和结束脉冲" alt="【时域】只考虑衰减的初始脉冲和结束脉冲">
