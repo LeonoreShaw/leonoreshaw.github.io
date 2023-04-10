@@ -12040,6 +12040,10 @@ figure.highlight .section {
 }
 .MathJax,
 .katex-display {
+  border-spacing: 0;
+  table-layout: fixed;
+  word-wrap: break-word;
+  word-break: break-all;
   overflow-x: auto;
   overflow-y: hidden;
 }
