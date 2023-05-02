@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^xxiao\.org$ [NC]
+RewriteRule ^xalpha(.*)$ https://xalpha.xxiao.org/$1 [R=301,L]
