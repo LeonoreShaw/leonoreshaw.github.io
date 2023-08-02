@@ -11788,7 +11788,7 @@ figure.highlight figcaption {
   font-size: 0.8em;
 }
 figure.highlight figcaption * {
-  color: inherit;
+  color: #ff10f0;
 }
 figure.highlight figcaption span {
   font-weight: 500;
