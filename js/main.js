@@ -96,7 +96,7 @@
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
             $('figure.highlight').each(function() {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
-                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-copy"></i></a>';
+                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-clone"></i></a>';
                 $(this).attr('id', id);
                 $(this).find('figcaption div.level-right').append(button);
             });
