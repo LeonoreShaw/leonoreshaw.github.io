@@ -1,4 +1,22 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
+//动态标题
+var OriginTitile = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        //离开当前页面时标签显示内容
+        document.title =  ' 🥹  w(ﾟДﾟ)w  - ' + OriginTitile;
+        clearTimeout(titleTime);
+    }
+    else {
+        //返回当前页面时标签显示内容
+        document.title = ' 😎 (^∇^*)  Welcome Back ~' ;
+        //3秒后变回正常标题
+        titleTime = setTimeout(function () {
+            document.title = OriginTitile;
+        }, 3000);
+    }
+});
 (function($, moment, ClipboardJS, config) {
     $('.article img:not(".not-gallery-item")').each(function() {
         // wrap images with link and add caption if possible
@@ -154,3 +172,4 @@
         $(this).wrap('<a class="card-link" href="' + $(this).find('h1 a').attr('href') + '"></a>');
     })}
 }(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
+
