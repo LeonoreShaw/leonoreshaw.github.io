@@ -1,6 +1,7 @@
 # X β —— a page sharing gorgeous things
 
 ***More coming soon......***
+***To be continue***
 
 ***
 
