@@ -63,6 +63,9 @@ span,
 .article-meta .level-left .fa-hand-pointer {
   color: #34c759;
 }
+.article-meta .level-left .fa-tags {
+  color: #ff2d55;
+}
 .content {
   text-align: justify;
 }
@@ -339,13 +342,6 @@ article.media .title {
 }
 .article-meta.level.is-mobile .level-item:not(.is-narrow) {
   flex-grow: 0 !important;
-}
-.article-tags.is-size-7.mb-4::before {
-  content: "\f02c";
-  color: #ff2d55;
-  font-family: "Font Awesome 5 Free";
-  margin-left: -20px;
-  margin-right: 6px;
 }
 .article-tags.is-size-7.mb-4 {
   padding-left: 20px;
