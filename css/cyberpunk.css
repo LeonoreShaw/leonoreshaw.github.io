@@ -57,6 +57,12 @@ span,
 .article-meta .level-left .fa-eye {
   color: #34c759;
 }
+.article-meta .level-left .fa-mouse-pointer {
+  color: #34c759;
+}
+.article-meta .level-left .fa-hand-pointer {
+  color: #34c759;
+}
 .content {
   text-align: justify;
 }
