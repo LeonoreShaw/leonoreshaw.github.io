@@ -73,8 +73,32 @@ span,
 .article-meta .level-left .fa-tags {
   color: #ff2d55;
 }
-.fab .fa-spotify {
+.fa-spotify {
   color: #34c759;
+}
+.fa-facebook-messenger {
+  color: #af2feb;
+}
+.fa-telegram-plane {
+  color: #08c;
+}
+.fa-telegram:before {
+  color: #08c;
+}
+.fa-envelope {
+  color: #e7992b;
+}
+.fa-facebook {
+  color: #1877f2;
+}
+.fa-whatsapp {
+  color: #25d366;
+}
+.fa-location-dot {
+  color: #ff2d55;
+}
+.fa-map-marker-alt {
+  color: #ff2d55;
 }
 .level-item .button .is-transparent .is-marginless .fab .card .widget .fa-spotify {
   color: #34c759;
