@@ -1,1 +1,95 @@
-!function(f,d){void 0!==f.IntersectionObserver&&d.querySelectorAll("#toc").forEach(function(e){const r=new Set,s=new Map,n=Array.from(e.querySelectorAll(".menu-list > li > a"));for(const a of n){var t=a.getAttribute("href").trim().slice(1),t=d.getElementById(t);t&&s.set(t,a)}const l=Array.from(s.keys());var o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting?r.add(e.target):r.delete(e.target);let o;if(r.size?o=[...r].sort((e,t)=>e.offsetTop-t.offsetTop)[0]:l.length&&(o=l.filter(e=>e.offsetTop<f.scrollY).sort((e,t)=>t.offsetTop-e.offsetTop)[0]),o&&s.has(o)){n.forEach(e=>e.classList.remove("is-active"));t=s.get(o);t.classList.add("is-active");let e=t.parentElement.parentElement;for(;e.classList.contains("menu-list")&&"li"===e.parentElement.tagName.toLowerCase();)e.parentElement.children[0].classList.add("is-active"),e=e.parentElement.parentElement}},{threshold:0});for(const i of l)if(o.observe(i),s.has(i)){const c=s.get(i);c.setAttribute("data-href",c.getAttribute("href")),c.setAttribute("href","javascript:;"),c.addEventListener("click",()=>{"function"==typeof i.scrollTo&&(e=i.id,e=d.getElementById(e).offsetTop- -20,d.documentElement.scrollTop=e,d.body.scrollTop=e);var e=c.getAttribute("data-href");history.pushState?history.pushState(null,null,e):location.hash=e}),i.style.scrollMargin="3.5em"}})}(window,document);
+(function (window, document) {
+    function scrollTo(id) {
+        var element = document.getElementById(id);
+        var headerOffset = -20;
+        var elementPosition = element.offsetTop;
+        var offsetPosition = elementPosition - headerOffset;
+        document.documentElement.scrollTop = offsetPosition;
+        document.body.scrollTop = offsetPosition; // For Safari
+    }
+
+    function register($toc) {
+      const currentInView = new Set();
+      const headingToMenu = new Map();
+      const $menus = Array.from($toc.querySelectorAll('.menu-list > li > a'));
+  
+      for (const $menu of $menus) {
+        const elementId = $menu.getAttribute('href').trim().slice(1);
+        const $heading = document.getElementById(elementId);
+
+        if ($heading) {
+          headingToMenu.set($heading, $menu);
+        }
+      }
+  
+      const $headings = Array.from(headingToMenu.keys());
+  
+      const callback = (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            currentInView.add(entry.target);
+          } else {
+            currentInView.delete(entry.target);
+          }
+        }
+        let $heading;
+        if (currentInView.size) {
+          // heading is the first in-view heading
+          $heading = [...currentInView].sort(($el1, $el2) => $el1.offsetTop - $el2.offsetTop)[0];
+        } else if ($headings.length) {
+          // heading is the closest heading above the viewport top
+          $heading = $headings
+            .filter(($heading) => $heading.offsetTop < window.scrollY)
+            .sort(($el1, $el2) => $el2.offsetTop - $el1.offsetTop)[0];
+        }
+        if ($heading && headingToMenu.has($heading)) {
+          $menus.forEach(($menu) => $menu.classList.remove('is-active'));
+  
+          const $menu = headingToMenu.get($heading);
+          $menu.classList.add('is-active');
+          let $menuList = $menu.parentElement.parentElement;
+          while (
+            $menuList.classList.contains('menu-list') &&
+            $menuList.parentElement.tagName.toLowerCase() === 'li'
+          ) {
+            $menuList.parentElement.children[0].classList.add('is-active');
+            $menuList = $menuList.parentElement.parentElement;
+          }
+        }
+      };
+      const observer = new IntersectionObserver(callback, { threshold: 0 });
+  
+      for (const $heading of $headings) {
+        observer.observe($heading);
+        // smooth scroll to the heading
+        if (headingToMenu.has($heading)) {
+          const $menu = headingToMenu.get($heading);
+          $menu.setAttribute('data-href', $menu.getAttribute('href'));
+          $menu.setAttribute('href', 'javascript:;');
+          $menu.addEventListener('click', () => {
+            if (typeof $heading.scrollTo === 'function') {
+            //   $heading.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            scrollTo($heading.id);
+            }
+            const anchor = $menu.getAttribute('data-href');
+            if (history.pushState) {
+              history.pushState(null, null, anchor);
+            } else {
+              location.hash = anchor;
+            }
+          });
+          // $heading.style.scrollMargin = '1em';
+          // $heading.style.marginTop = '-.8em';
+          // $heading.style.paddingTop = '.8em';
+          $heading.style.scrollMargin = '3.5em';
+          // $heading.style.scrollSnapMargin = '1.5em';
+        }
+      }
+    }
+  
+    if (typeof window.IntersectionObserver === 'undefined') {
+      return;
+    }
+  
+    document.querySelectorAll('#toc').forEach(register);
+  })(window, document);
