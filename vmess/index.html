@@ -4,127 +4,144 @@
 <p>The VPS provider in this demonstration is Vultr. The operating system is Ubantu22.04, and the type of the node is vmess+ws+tls. Record the operation steps so that the node can be quickly built when needed.</p>
 <p>目前最稳定的节点搭建方式：使用Vultr的VPS搭建vmess+ws+tls节点的详细步骤</p>
 <span id="more"></span>
-
-<h1 id="1、VPS服务器"><a href="#1、VPS服务器" class="headerlink" title="1、VPS服务器"></a>1、VPS服务器</h1><ul>
-<li><p>在Vultr官网选择服务器进行部署，操作系统Ubantu22.04</p>
+<h1>1、VPS服务器</h1>
+<ul>
+<li>
+<p>在Vultr官网选择服务器进行部署，操作系统Ubantu22.04</p>
 </li>
-<li><p>等待部署完成，记下root用户密码，为下面ssh登录</p>
+<li>
+<p>等待部署完成，记下root用户密码，为下面ssh登录</p>
 </li>
-<li><p>域名DNS解析到服务器IP</p>
-</li>
-</ul>
-<h1 id="2、连接主机"><a href="#2、连接主机" class="headerlink" title="2、连接主机"></a>2、连接主机</h1><ul>
-<li><p>FinalShell新建连接</p>
-</li>
-<li><p>输入主机IP和root密码连接</p>
+<li>
+<p>域名DNS解析到服务器IP</p>
 </li>
 </ul>
-<h1 id="3、节点搭建"><a href="#3、节点搭建" class="headerlink" title="3、节点搭建"></a>3、节点搭建</h1><figure class="highlight shell"><figcaption><span>FinalShell</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新软件源</span> </span><br><span class="line">apt update</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用 BBR TCP 拥塞控制算法</span></span><br><span class="line"></span><br><span class="line">echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装x-ui：</span> </span><br><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装nginx</span> </span><br><span class="line">apt install nginx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装acme：</span> </span><br><span class="line">curl https://get.acme.sh | sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装socat：(如果要使用独立模式--standalone)</span></span><br><span class="line">apt install socat</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">添加软链接：</span> </span><br><span class="line">ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">开放端口：</span></span><br><span class="line">ufw allow 80</span><br><span class="line">ufw allow 443</span><br><span class="line">ufw allow 9999</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注册账号：</span> </span><br><span class="line">acme.sh --register-account -m leonoreshaw@gmail.com</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">等待域名DNS解析完成</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">申请证书： (改域名)</span></span><br><span class="line">acme.sh --issue -d d.leonore.cf -k ec-256 --webroot /var/www/html</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">申请证书：</span> </span><br><span class="line">acme.sh  --issue -d a.leonore.cf  --standalone -k ec-256</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装证书： (改域名)</span></span><br><span class="line">acme.sh --install-cert -d d.leonore.cf --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt --reloadcmd &quot;systemctl force-reload nginx&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装证书（Trojan：</span> </span><br><span class="line">acme.sh --installcert -d 替换为你的域名 --ecc  --key-file   /root/trojan/server.key   --fullchain-file /root/trojan/server.crt </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果默认CA无法颁发，则可以切换下列CA：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 Let’s Encrypt：</span></span><br><span class="line">acme.sh --set-default-ca --server letsencrypt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 Buypass：</span></span><br><span class="line">acme.sh --set-default-ca --server buypass</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 ZeroSSL：</span></span><br><span class="line">acme.sh --set-default-ca --server zerossl</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换CA机构：</span> </span><br><span class="line">acme.sh --set-default-ca --server letsencrypt</span><br></pre></td></tr></table></figure>
-
-<h1 id="4、寻找伪装网站"><a href="#4、寻找伪装网站" class="headerlink" title="4、寻找伪装网站"></a>4、寻找伪装网站</h1><article class="message is-info"><div class="message-body">
+<h1>2、连接主机</h1>
+<ul>
+<li>
+<p>FinalShell新建连接</p>
+</li>
+<li>
+<p>输入主机IP和root密码连接</p>
+</li>
+</ul>
+<h1>3、节点搭建</h1>
+<figure class="highlight shell"><figcaption><span>FinalShell</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新软件源</span> </span><br><span class="line">apt update</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用 BBR TCP 拥塞控制算法</span></span><br><span class="line"></span><br><span class="line">echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装x-ui：</span> </span><br><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装nginx</span> </span><br><span class="line">apt install nginx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装acme：</span> </span><br><span class="line">curl https://get.acme.sh | sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装socat：(如果要使用独立模式--standalone)</span></span><br><span class="line">apt install socat</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">添加软链接：</span> </span><br><span class="line">ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">开放端口：</span></span><br><span class="line">ufw allow 80</span><br><span class="line">ufw allow 443</span><br><span class="line">ufw allow 9999</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注册账号：</span> </span><br><span class="line">acme.sh --register-account -m leonoreshaw@gmail.com</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">等待域名DNS解析完成</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">申请证书： (改域名)</span></span><br><span class="line">acme.sh --issue -d d.leonore.cf -k ec-256 --webroot /var/www/html</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">申请证书：</span> </span><br><span class="line">acme.sh  --issue -d a.leonore.cf  --standalone -k ec-256</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装证书： (改域名)</span></span><br><span class="line">acme.sh --install-cert -d d.leonore.cf --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt --reloadcmd &quot;systemctl force-reload nginx&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装证书（Trojan：</span> </span><br><span class="line">acme.sh --installcert -d 替换为你的域名 --ecc  --key-file   /root/trojan/server.key   --fullchain-file /root/trojan/server.crt </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果默认CA无法颁发，则可以切换下列CA：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 Let’s Encrypt：</span></span><br><span class="line">acme.sh --set-default-ca --server letsencrypt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 Buypass：</span></span><br><span class="line">acme.sh --set-default-ca --server buypass</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换 ZeroSSL：</span></span><br><span class="line">acme.sh --set-default-ca --server zerossl</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换CA机构：</span> </span><br><span class="line">acme.sh --set-default-ca --server letsencrypt</span><br></pre></td></tr></table></figure>
+<h1>4、寻找伪装网站</h1>
+<article class="message is-info"><div class="message-body">
 <p>http站点优先，个人网盘符合单节点大流量特征。</p>
 </div></article>
-
 <p>示例关键字：<code>intext:登录 Cloudreve</code></p>
-<h1 id="5、登录xui"><a href="#5、登录xui" class="headerlink" title="5、登录xui"></a>5、登录xui</h1><ul>
-<li><p>访问网站的9999端口<code>d.leonore.cf:9999</code></p>
-</li>
-<li><p>使用xui账户登录</p>
+<h1>5、登录xui</h1>
 <ul>
-<li><p>adminroot</p>
+<li>
+<p>访问网站的9999端口<code>d.leonore.cf:9999</code></p>
 </li>
-<li><p>xxm54michael</p>
-</li>
-</ul>
-</li>
-<li><p>切换xray版本为最新版</p>
-</li>
-<li><p>进入<code>入站列表</code>选项卡</p>
-</li>
-<li><p>添加入站节点</p>
+<li>
+<p>使用xui账户登录</p>
 <ul>
-<li><p>备注：<code>vmess+ws+tls</code></p>
+<li>
+<p>adminroot</p>
 </li>
-<li><p>监听IP：<code>127.0.0.1</code></p>
-</li>
-<li><p>端口：<code>10000</code></p>
-</li>
-<li><p>传输：<code>ws</code></p>
-</li>
-<li><p>id复制到路径</p>
+<li>
+<p>xxm54michael</p>
 </li>
 </ul>
 </li>
-<li><p>进入<code>面板设置</code>选项卡</p>
+<li>
+<p>切换xray版本为最新版</p>
+</li>
+<li>
+<p>进入<code>入站列表</code>选项卡</p>
+</li>
+<li>
+<p>添加入站节点</p>
 <ul>
-<li><p>面板监听IP：<code>127.0.0.1</code></p>
+<li>
+<p>备注：<code>vmess+ws+tls</code></p>
 </li>
-<li><p>面板监听端口：<code>9999</code></p>
+<li>
+<p>监听IP：<code>127.0.0.1</code></p>
 </li>
-<li><p>面板url根路径：<code>/id-xui</code></p>
+<li>
+<p>端口：<code>10000</code></p>
 </li>
-<li><p>保存配置</p>
+<li>
+<p>传输：<code>ws</code></p>
 </li>
-<li><p>重启面板</p>
+<li>
+<p>id复制到路径</p>
+</li>
+</ul>
+</li>
+<li>
+<p>进入<code>面板设置</code>选项卡</p>
+<ul>
+<li>
+<p>面板监听IP：<code>127.0.0.1</code></p>
+</li>
+<li>
+<p>面板监听端口：<code>9999</code></p>
+</li>
+<li>
+<p>面板url根路径：<code>/id-xui</code></p>
+</li>
+<li>
+<p>保存配置</p>
+</li>
+<li>
+<p>重启面板</p>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="6、配置nginx"><a href="#6、配置nginx" class="headerlink" title="6、配置nginx"></a>6、配置nginx</h1><p>配置文件路径：<code>/etc/nginx/nginx.conf</code></p>
+<h1>6、配置nginx</h1>
+<p>配置文件路径：<code>/etc/nginx/nginx.conf</code></p>
 <figure class="highlight yaml"><figcaption><span>nginx.conf</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">user</span> <span class="string">www-data;</span></span><br><span class="line"><span class="string">worker_processes</span> <span class="string">auto;</span></span><br><span class="line"><span class="string">pid</span> <span class="string">/run/nginx.pid;</span></span><br><span class="line"><span class="string">include</span> <span class="string">/etc/nginx/modules-enabled/*.conf;</span></span><br><span class="line"></span><br><span class="line"><span class="string">events</span> &#123;</span><br><span class="line">    <span class="string">worker_connections</span> <span class="number">1024</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">http</span> &#123;</span><br><span class="line">    <span class="string">sendfile</span> <span class="string">on;</span></span><br><span class="line">    <span class="string">tcp_nopush</span> <span class="string">on;</span></span><br><span class="line">    <span class="string">tcp_nodelay</span> <span class="string">on;</span></span><br><span class="line">    <span class="string">keepalive_timeout</span> <span class="number">65</span><span class="string">;</span></span><br><span class="line">    <span class="string">types_hash_max_size</span> <span class="number">2048</span><span class="string">;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">include</span> <span class="string">/etc/nginx/mime.types;</span></span><br><span class="line">    <span class="string">default_type</span> <span class="string">application/octet-stream;</span></span><br><span class="line">    <span class="string">gzip</span> <span class="string">on;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span> <span class="number">443</span> <span class="string">ssl;</span></span><br><span class="line"></span><br><span class="line">        <span class="string">server_name</span> <span class="string">d.leonore.cf;</span>  <span class="comment">#你的域名       $$$$$$$$改$$$$$$$$$$</span></span><br><span class="line">        <span class="string">ssl_certificate</span>       <span class="string">/etc/x-ui/server.crt;</span>  <span class="comment">#证书位置</span></span><br><span class="line">        <span class="string">ssl_certificate_key</span>   <span class="string">/etc/x-ui/server.key;</span> <span class="comment">#私钥位置</span></span><br><span class="line"></span><br><span class="line">        <span class="string">ssl_session_timeout</span> <span class="string">1d;</span></span><br><span class="line">        <span class="string">ssl_session_cache</span> <span class="string">shared:MozSSL:10m;</span></span><br><span class="line">        <span class="string">ssl_session_tickets</span> <span class="string">off;</span></span><br><span class="line">        <span class="string">ssl_protocols</span>    <span class="string">TLSv1.2</span> <span class="string">TLSv1.3;</span></span><br><span class="line">        <span class="string">ssl_prefer_server_ciphers</span> <span class="string">off;</span></span><br><span class="line"></span><br><span class="line">        <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">            <span class="string">proxy_pass</span> <span class="string">https://cloud.forevers.top;</span> <span class="comment">#伪装网址   $$$$$$$$$$$$$$$$$$$$</span></span><br><span class="line">            <span class="string">proxy_redirect</span> <span class="string">off;</span></span><br><span class="line">            <span class="string">proxy_ssl_server_name</span> <span class="string">on;</span></span><br><span class="line">            <span class="string">sub_filter_once</span> <span class="string">off;</span></span><br><span class="line">            <span class="string">sub_filter</span> <span class="string">&quot;cloud.forevers.top&quot;</span> <span class="string">$server_name;</span>  <span class="comment"># $$$$$$$$$$$$$$$$$$$$$$$$$$</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">&quot;cloud.forevers.top&quot;</span><span class="string">;</span>   <span class="comment"># $$$$$$$$$$$$$$$$$$$$$$$$$$</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Referer</span> <span class="string">$http_referer;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">User-Agent</span> <span class="string">$http_user_agent;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-Forwarded-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-Forwarded-Proto</span> <span class="string">https;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Accept-Encoding</span> <span class="string">&quot;&quot;</span><span class="string">;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Accept-Language</span> <span class="string">&quot;zh-CN&quot;</span><span class="string">;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="string">location</span> <span class="string">/1a2569a8-eabd-4039-e53f-df76b491745f</span> &#123;   <span class="comment">#分流路径 替换ray为xray节点里的id  $$$$$$$改$$$$$$$$$$$$$$$$$</span></span><br><span class="line">            <span class="string">proxy_redirect</span> <span class="string">off;</span></span><br><span class="line">            <span class="string">proxy_pass</span> <span class="string">http://127.0.0.1:10000;</span> <span class="comment">#Xray端口  ￥￥￥￥￥￥￥￥</span></span><br><span class="line">            <span class="string">proxy_http_version</span> <span class="number">1.1</span><span class="string">;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Upgrade</span> <span class="string">$http_upgrade;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Connection</span> <span class="string">&quot;upgrade&quot;</span><span class="string">;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$host;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">X-Forwarded-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="string">location</span> <span class="string">/1a2569a8-eabd-4039-e53f-df76b491745f-xui</span> &#123;   <span class="comment">#xui路径 替换xui为id-xui $$$$$$$$改$$$$$$$$$$$$$$</span></span><br><span class="line">            <span class="string">proxy_redirect</span> <span class="string">off;</span></span><br><span class="line">            <span class="string">proxy_pass</span> <span class="string">http://127.0.0.1:9999;</span>  <span class="comment">#xui监听端口   ￥￥￥￥￥￥￥￥￥</span></span><br><span class="line">            <span class="string">proxy_http_version</span> <span class="number">1.1</span><span class="string">;</span></span><br><span class="line">            <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$host;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span> <span class="number">80</span><span class="string">;</span></span><br><span class="line">        <span class="string">location</span> <span class="string">/.well-known/</span> &#123;</span><br><span class="line">               <span class="string">root</span> <span class="string">/var/www/html;</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">                <span class="string">rewrite</span> <span class="string">^(.*)$</span> <span class="string">https://$host$1</span> <span class="string">permanent;</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="7、重新加载配置文件"><a href="#7、重新加载配置文件" class="headerlink" title="7、重新加载配置文件"></a>7、重新加载配置文件</h1><p>FinalShell</p>
+<h1>7、重新加载配置文件</h1>
+<p>FinalShell</p>
 <ul>
 <li><code>systemctl reload nginx</code></li>
 </ul>
-<h1 id="8、导入节点"><a href="#8、导入节点" class="headerlink" title="8、导入节点"></a>8、导入节点</h1><ul>
-<li><p>登录xui界面<code>d.leonore.cf/id-xui</code></p>
-</li>
-<li><p>在<code>入站列表</code>选项卡下点击<code>查看</code></p>
-</li>
-<li><p>复制链接</p>
-</li>
-<li><p>将节点导入v2rayN</p>
-</li>
-<li><p>修改节点信息</p>
+<h1>8、导入节点</h1>
 <ul>
-<li><p>地址：<code>d.leonore.cf</code></p>
+<li>
+<p>登录xui界面<code>d.leonore.cf/id-xui</code></p>
 </li>
-<li><p>端口：<code>443</code></p>
+<li>
+<p>在<code>入站列表</code>选项卡下点击<code>查看</code></p>
 </li>
-<li><p>vmess加密方式：<code>zero</code></p>
+<li>
+<p>复制链接</p>
 </li>
-<li><p>传输安全：<code>tls</code></p>
+<li>
+<p>将节点导入v2rayN</p>
+</li>
+<li>
+<p>修改节点信息</p>
+<ul>
+<li>
+<p>地址：<code>d.leonore.cf</code></p>
+</li>
+<li>
+<p>端口：<code>443</code></p>
+</li>
+<li>
+<p>vmess加密方式：<code>zero</code></p>
+</li>
+<li>
+<p>传输安全：<code>tls</code></p>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="9、测速！！！"><a href="#9、测速！！！" class="headerlink" title="9、测速！！！"></a>9、测速！！！</h1><h1 id="10、多用户合租（可选）"><a href="#10、多用户合租（可选）" class="headerlink" title="10、多用户合租（可选）"></a>10、多用户合租（可选）</h1><div class="notification is-success">
+<h1>9、测速！！！</h1>
+<h1>10、多用户合租（可选）</h1>
+<div class="notification is-success">
 <p>通过修改nginx的配置文件实现<code>ws path</code>路径分流</p>
 </div>
-
 <figure class="highlight yaml"><figcaption><span>nginx.conf</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="string">location</span> <span class="string">/ray</span> &#123;   <span class="comment">#分流路径</span></span><br><span class="line">    <span class="string">proxy_redirect</span> <span class="string">off;</span></span><br><span class="line">    <span class="string">proxy_pass</span> <span class="string">http://127.0.0.1:10000;</span> <span class="comment">#Xray端口</span></span><br><span class="line">    <span class="string">proxy_http_version</span> <span class="number">1.1</span><span class="string">;</span></span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Upgrade</span> <span class="string">$http_upgrade;</span></span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Connection</span> <span class="string">&quot;upgrade&quot;</span><span class="string">;</span></span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$host;</span></span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Forwarded-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="article-licensing box"><div class="licensing-title"><p>Build vmess+ws+tls node with Vultr VPS</p><p><a href="https://xxiao.org/vmess/">https://xxiao.org/vmess/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Léonore</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-08-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="level-left"><i class="fas fa-tags"></i> <a class="link-muted mr-2" rel="tag" href="/tags/VPS/">VPS</a><hr style="height:1px;margin:1rem 1"></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/u/13c39d7622b711ee983052540025c377" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" href="https://www.buymeacoffee.com/leonoreshaw" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/twikoo/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">关于更换Twikoo评论部署方式</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/clash/"><span class="level-item">Clash</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><link rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous"><script defer src="https://lib.baomitu.com/KaTeX/0.12.0/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script><script defer src="https://lib.baomitu.com/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script><h3 class="title is-5">Comments</h3><div class="content twikoo" id="twikoo"></div><script src="https://lib.baomitu.com/twikoo/1.6.20/twikoo.min.js"></script><script>twikoo.init({
-      envId: 'https://twikoo.xxiao.org/',
-      onCommentLoaded: function(){
-        console.log('评论加载完成');
-        var tkImgs = document.querySelectorAll(".tk-content img")
-        tkImgs.forEach(tkImg => {
-        tkImg.style.setProperty("cursor","zoom-in");
-        tkImg.addEventListener('click', function(){
-          if(tkImg.style.getPropertyValue("cursor") == "zoom-in"){
-            tkImg.style.setProperty("max-width", "100%", "important")
-            tkImg.style.setProperty("max-height", "100%", "important")
-            tkImg.style.setProperty("cursor","zoom-out")
-          }
-          else{
-            tkImg.style.removeProperty("max-width")
-            tkImg.style.removeProperty("max-height")
-            tkImg.style.setProperty("cursor","zoom-in")
-          }
-          })
-        });
-      }});</script></div>;</div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1、VPS服务器"><span class="level-left"><span class="level-item">1</span><span class="level-item">1、VPS服务器</span></span></a></li><li><a class="level is-mobile" href="#2、连接主机"><span class="level-left"><span class="level-item">2</span><span class="level-item">2、连接主机</span></span></a></li><li><a class="level is-mobile" href="#3、节点搭建"><span class="level-left"><span class="level-item">3</span><span class="level-item">3、节点搭建</span></span></a></li><li><a class="level is-mobile" href="#4、寻找伪装网站"><span class="level-left"><span class="level-item">4</span><span class="level-item">4、寻找伪装网站</span></span></a></li><li><a class="level is-mobile" href="#5、登录xui"><span class="level-left"><span class="level-item">5</span><span class="level-item">5、登录xui</span></span></a></li><li><a class="level is-mobile" href="#6、配置nginx"><span class="level-left"><span class="level-item">6</span><span class="level-item">6、配置nginx</span></span></a></li><li><a class="level is-mobile" href="#7、重新加载配置文件"><span class="level-left"><span class="level-item">7</span><span class="level-item">7、重新加载配置文件</span></span></a></li><li><a class="level is-mobile" href="#8、导入节点"><span class="level-left"><span class="level-item">8</span><span class="level-item">8、导入节点</span></span></a></li><li><a class="level is-mobile" href="#9、测速！！！"><span class="level-left"><span class="level-item">9</span><span class="level-item">9、测速！！！</span></span></a></li><li><a class="level is-mobile" href="#10、多用户合租（可选）"><span class="level-left"><span class="level-item">10</span><span class="level-item">10、多用户合租（可选）</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2024 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a><br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span><span> , </span><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">0</span> total times</span></p></div><div class="level-item" style="display:flex;justifyContent:center;"><p style="text-align:center"><br><a href="https://ipw.cn/ipv6webcheck/?site=xxiao.org" title="IPv6 support" target="_blank"><img no-lazy style="display:inline-block;vertical-align:middle" alt="IPv6 support" src="https://static.ipw.cn/icon/ipv6-certified-s2.svg"></a><a href="https://ipw.cn/ssl/?site=xxiao.org" title="SSL" target="_blank"><img no-lazy style="justifyContent:center;alignItems:center" alt="SSL" src="https://static.ipw.cn/icon/ssl-s1.svg"></a><br><script>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Build vmess+ws+tls node with Vultr VPS</p><p><a href="https://xxiao.org/vmess/">https://xxiao.org/vmess/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Léonore</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-08-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="level-left"><i class="fas fa-tags"></i> <a class="link-muted mr-2" rel="tag" href="/tags/VPS/">VPS</a><hr style="height:1px;margin:1rem 1"></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/u/13c39d7622b711ee983052540025c377" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" href="https://www.buymeacoffee.com/leonoreshaw" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/twikoo/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">关于更换Twikoo评论部署方式</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/clash/"><span class="level-item">Clash</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">1、VPS服务器</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">2、连接主机</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">3、节点搭建</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">4、寻找伪装网站</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">5、登录xui</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">6、配置nginx</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">7、重新加载配置文件</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">8</span><span class="level-item">8、导入节点</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">9</span><span class="level-item">9、测速！！！</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">10</span><span class="level-item">10、多用户合租（可选）</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2024 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a><br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span><span> , </span><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">0</span> total times</span></p></div><div class="level-item" style="display:flex;justifyContent:center;"><p style="text-align:center"><br><a href="https://ipw.cn/ipv6webcheck/?site=xxiao.org" title="IPv6 support" target="_blank"><img no-lazy style="display:inline-block;vertical-align:middle" alt="IPv6 support" src="https://static.ipw.cn/icon/ipv6-certified-s2.svg"></a><a href="https://ipw.cn/ssl/?site=xxiao.org" title="SSL" target="_blank"><img no-lazy style="justifyContent:center;alignItems:center" alt="SSL" src="https://static.ipw.cn/icon/ssl-s1.svg"></a><br><script>
                             var now = new Date();
                             function createtime() {
                                 var grt= new Date("12/31/2020 23:59:59");
