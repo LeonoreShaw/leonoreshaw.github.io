@@ -6,52 +6,67 @@
 <article class="message is-warning"><div class="message-body">
 ☠️  Nodes set up using the previous method are no longer operational. TLS has been accurately detected, and the IP ports may have been blocked. 
 </div></article>
+
+
+
 <span id="more"></span>
+
+
+
 <p>Due to various reasons, the nodes that were previously set up have been detected and had their ports and IP addresses blocked. In any case, they are no longer usable. This led to the development of improved methods for setting up new nodes.</p>
-<h1>VPS Purchase</h1>
-<p>Providers like BandwagonHost, Cloudcone, and Recknerd, etc. I am reinstalling the system directly on the existing VPS.</p>
-<h1>Recording VPS Information</h1>
-<p>IP Address: 1.2.3.4</p>
+<h1 id="VPS-Purchase"><a href="#VPS-Purchase" class="headerlink" title="VPS Purchase"></a>VPS Purchase</h1><p>Providers like BandwagonHost, Cloudcone, and Recknerd, etc. I am reinstalling the system directly on the existing VPS.</p>
+<h1 id="Recording-VPS-Information"><a href="#Recording-VPS-Information" class="headerlink" title="Recording VPS Information"></a>Recording VPS Information</h1><p>IP Address: 1.2.3.4</p>
 <p>Port: 22</p>
 <p>Username: root</p>
 <p>Password: ***</p>
-<h1>Logging into VPS using SSH Tool.</h1>
-<br>
+<h1 id="Logging-into-VPS-using-SSH-Tool"><a href="#Logging-into-VPS-using-SSH-Tool" class="headerlink" title="Logging into VPS using SSH Tool."></a>Logging into VPS using SSH Tool.</h1><br>
+
 <article class="message is-info"><div class="message-body">
 <p>You can use any SSH tool you prefer, such as XShell, FinalShell, etc. Windows users can also utilize Windows Terminal.</p>
 </div></article>
+
 <br>
+
 <p>If using Windows Terminal, enter the following command in the command line:</p>
 <figure class="highlight bash"><figcaption><span>ssh.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">ssh root@[IP] -p [Port，ig `22`]</span><br></pre></td></tr></table></figure>
+
 <br>
+
 <p>Example</p>
 <figure class="highlight bash"><figcaption><span>ssh.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">ssh root@1.2.3.4 -p 22</span><br></pre></td></tr></table></figure>
+
 <br>
+
 <p>Replace <code>1.2.3.4</code> with your VPS IP address and enter the password when prompted.</p>
 <p>Open the firewall for the relevant ports.</p>
-<h1>Installing X-UI</h1>
-<p>After successful login, use the following command to install x-ui:</p>
+<h1 id="Installing-X-UI"><a href="#Installing-X-UI" class="headerlink" title="Installing X-UI"></a>Installing X-UI</h1><p>After successful login, use the following command to install x-ui:</p>
 <figure class="highlight bash"><figcaption><span>x-ui.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/956bf85bbac978d56c0e319c5fac2d6db7df9564/install.sh) 0.3.4.4</span><br></pre></td></tr></table></figure>
+
 <br>
-<p>The installation process may take some time.</p>
+
+<p>The installation process may take some time. </p>
 <p>After the installation is complete, you will be prompted to set a username and password:</p>
 <ul>
 <li>Username: admin</li>
 <li>Password: admin</li>
 <li>Panel Access Port: 10000</li>
 </ul>
-<h1>Logging into X-UI</h1>
-<p>Access <code>[IP Address]:10000</code> using the provided username and password.</p>
+<h1 id="Logging-into-X-UI"><a href="#Logging-into-X-UI" class="headerlink" title="Logging into X-UI"></a>Logging into X-UI</h1><p>Access <code>[IP Address]:10000</code> using the provided username and password.</p>
 <p>After successful login, select <code>Change Version</code> and choose <code>1.8.3</code>.</p>
 <br>
+
 <article class="message is-success"><div class="message-body">
 <p>👻 The installation of the X-UI panel is complete, and all preliminary preparations are in place. Next, let’s proceed with setting up three different types of nodes.</p>
 </div></article>
+
+
 <br>
+
+
 <hr>
 <br>
-<h1>vmess + ws</h1>
-<p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
+
+<h1 id="vmess-ws"><a href="#vmess-ws" class="headerlink" title="vmess + ws"></a>vmess + ws</h1><p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
 <ul>
 <li>备注：vmess+ws</li>
 <li>协议：vmess</li>
@@ -61,8 +76,7 @@
 <li>路径：<code>/</code>加上 id 部分的前面一小段，如 <code>/ae23a504</code></li>
 <li>最后点击添加，以完成搭建</li>
 </ul>
-<h1>vless + version</h1>
-<p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
+<h1 id="vless-version"><a href="#vless-version" class="headerlink" title="vless + version"></a>vless + version</h1><p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
 <ul>
 <li>备注：vless+version</li>
 <li>协议：vless</li>
@@ -71,31 +85,34 @@
 <li>启用 <code>tls</code></li>
 <li>域名：将 <code>.</code> 改为 <code>-</code>，并在末尾加上 <code>.nip.io</code>。复制此域名，在申请证书时使用</li>
 <li>搭建vision节点申请证书（在 SSH 工具中运行以下命令）</li>
-<li>
-<ul>
+<li><ul>
 <li>安装证书工具</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight bash"><figcaption><span>安装证书工具.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">curl https://get.acme.sh | sh; apt install socat -y || yum install socat -y; ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt</span><br></pre></td></tr></table></figure>
+
 <br>
+
+
 <ul>
-<li>
-<ul>
+<li><ul>
 <li>三种方式任选其中一种，申请失败则更换方式</li>
 </ul>
 </li>
 </ul>
 <br>
+
 <div class="notification is-info">
 <p>将<code>你的域名</code>更换为复制的<code>.nio.io</code>结尾的域名后再运行命令。</p>
 </div>
+
+
 <br>
+
 <ul>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>申请证书方式1</li>
 </ul>
 </li>
@@ -103,11 +120,10 @@
 </li>
 </ul>
 <figure class="highlight bash"><figcaption><span>申请证书方式1.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>申请证书方式2</li>
 </ul>
 </li>
@@ -115,11 +131,10 @@
 </li>
 </ul>
 <figure class="highlight bash"><figcaption><span>申请证书方式2.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">~/.acme.sh/acme.sh --register-account -m <span class="string">&quot;<span class="variable">$&#123;RANDOM&#125;</span>@chacuo.net&quot;</span> --server buypass --force --insecure &amp;&amp; ~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server buypass</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>申请证书方式3</li>
 </ul>
 </li>
@@ -127,21 +142,23 @@
 </li>
 </ul>
 <figure class="highlight bash"><figcaption><span>申请证书方式3.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">~/.acme.sh/acme.sh --register-account -m <span class="string">&quot;<span class="variable">$&#123;RANDOM&#125;</span>@chacuo.net&quot;</span> --server zerossl --force --insecure &amp;&amp; ~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server zerossl</span><br></pre></td></tr></table></figure>
+
+
 <ul>
-<li>
-<ul>
+<li><ul>
 <li>安装证书</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight bash"><figcaption><span>安装证书.sh</span><a href="https://xxiao.org">© xxiao.org</a></figcaption><table><tr><td class="code"><pre><span class="line">~/.acme.sh/acme.sh --install-cert -d 你的域名 --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt</span><br></pre></td></tr></table></figure>
+
 <br>
+
 <ul>
-<li>公钥/密钥文件路径：安装证书成功后会显示，直接粘贴至 x-ui 面板</li>
+<li>公钥&#x2F;密钥文件路径：安装证书成功后会显示，直接粘贴至 x-ui 面板</li>
 <li>最后点击添加，以完成搭建</li>
 </ul>
-<h1>vless + version + reality</h1>
-<p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
+<h1 id="vless-version-reality"><a href="#vless-version-reality" class="headerlink" title="vless + version + reality"></a>vless + version + reality</h1><p>在 x-ui 面板点击 <code>入站列表</code>，并点击 <code>添加入站</code></p>
 <ul>
 <li>备注：vless+version+reality</li>
 <li>协议：vless</li>
@@ -153,34 +170,28 @@
 <li>可选域名：复制 id 部分的前面一小段，结尾加上 <code>.com</code>，如 <code>ae23a504.com</code></li>
 <li>最后点击添加，以完成搭建</li>
 </ul>
-<h1>导入节点</h1>
-<p>完成任意一种节点搭建后，将其导入至客户端（V2ray、Clash 等）</p>
+<h1 id="导入节点"><a href="#导入节点" class="headerlink" title="导入节点"></a>导入节点</h1><p>完成任意一种节点搭建后，将其导入至客户端（V2ray、Clash 等）</p>
 <ul>
 <li>在 x-ui 面板的任意节点</li>
-<li>
-<ul>
+<li><ul>
 <li>点击<code>操作</code></li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>点击<code>二维码</code></li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>点击<code>复制</code></li>
 </ul>
 </li>
 <li>在任意客户端</li>
-<li>
-<ul>
+<li><ul>
 <li><code>从剪贴板导入节点</code></li>
 </ul>
 </li>
 </ul>
-<h1>🚀 Node setup is complete</h1>
-<p>The node setup is completed based on the improvement to address the issue of port and IP blocking encountered in previous node setups. Due to its unique nature, there’s a possibility that this approach may become ineffective in the future. However, efforts will continue to be made to improve and update the setup process.</p>
+<h1 id="🚀-Node-setup-is-complete"><a href="#🚀-Node-setup-is-complete" class="headerlink" title="🚀 Node setup is complete"></a>🚀 Node setup is complete</h1><p>The node setup is completed based on the improvement to address the issue of port and IP blocking encountered in previous node setups. Due to its unique nature, there’s a possibility that this approach may become ineffective in the future. However, efforts will continue to be made to improve and update the setup process.</p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>Introducing a Brand New Technology of Building VPS Nodes</p><p><a href="https://xxiao.org/node/">https://xxiao.org/node/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Léonore</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-08-01</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="level-left"><i class="fas fa-tags"></i> <a class="link-muted mr-2" rel="tag" href="/tags/VPS/">VPS</a><hr style="height:1px;margin:1rem 1"></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/u/13c39d7622b711ee983052540025c377" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" href="https://www.buymeacoffee.com/leonoreshaw" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/soliton-en/"><span class="level-item">Optical Soliton</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><link rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous"><script defer src="https://lib.baomitu.com/KaTeX/0.12.0/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script><script defer src="https://lib.baomitu.com/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script><div class="content twikoo" id="twikoo"></div><script src="https://lib.baomitu.com/twikoo/1.6.20/twikoo.min.js"></script><script>twikoo.init({
       envId: 'https://twikoo.xxiao.org/',
       onCommentLoaded: function(){
@@ -201,7 +212,7 @@
           }
           })
         });
-      }});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">VPS Purchase</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">Recording VPS Information</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">Logging into VPS using SSH Tool.</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">Installing X-UI</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">Logging into X-UI</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">vmess + ws</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">vless + version</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">8</span><span class="level-item">vless + version + reality</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">9</span><span class="level-item">导入节点</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">10</span><span class="level-item">🚀 Node setup is complete</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2024 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a><br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span><span> , </span><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">0</span> total times</span></p></div><div class="level-item" style="display:flex;justifyContent:center;"><p style="text-align:center"><br><a href="https://ipw.cn/ipv6webcheck/?site=xxiao.org" title="IPv6 support" target="_blank"><img no-lazy style="display:inline-block;vertical-align:middle" alt="IPv6 support" src="https://static.ipw.cn/icon/ipv6-certified-s2.svg"></a><a href="https://ipw.cn/ssl/?site=xxiao.org" title="SSL" target="_blank"><img no-lazy style="justifyContent:center;alignItems:center" alt="SSL" src="https://static.ipw.cn/icon/ssl-s1.svg"></a><br><script>
+      }});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#VPS-Purchase"><span class="level-left"><span class="level-item">1</span><span class="level-item">VPS Purchase</span></span></a></li><li><a class="level is-mobile" href="#Recording-VPS-Information"><span class="level-left"><span class="level-item">2</span><span class="level-item">Recording VPS Information</span></span></a></li><li><a class="level is-mobile" href="#Logging-into-VPS-using-SSH-Tool"><span class="level-left"><span class="level-item">3</span><span class="level-item">Logging into VPS using SSH Tool.</span></span></a></li><li><a class="level is-mobile" href="#Installing-X-UI"><span class="level-left"><span class="level-item">4</span><span class="level-item">Installing X-UI</span></span></a></li><li><a class="level is-mobile" href="#Logging-into-X-UI"><span class="level-left"><span class="level-item">5</span><span class="level-item">Logging into X-UI</span></span></a></li><li><a class="level is-mobile" href="#vmess-ws"><span class="level-left"><span class="level-item">6</span><span class="level-item">vmess + ws</span></span></a></li><li><a class="level is-mobile" href="#vless-version"><span class="level-left"><span class="level-item">7</span><span class="level-item">vless + version</span></span></a></li><li><a class="level is-mobile" href="#vless-version-reality"><span class="level-left"><span class="level-item">8</span><span class="level-item">vless + version + reality</span></span></a></li><li><a class="level is-mobile" href="#导入节点"><span class="level-left"><span class="level-item">9</span><span class="level-item">导入节点</span></span></a></li><li><a class="level is-mobile" href="#🚀-Node-setup-is-complete"><span class="level-left"><span class="level-item">10</span><span class="level-item">🚀 Node setup is complete</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/LogoTitle.webp" alt="le Blog de Léonore" height="28"></a><p class="is-size-7"><span>&copy; 2020-2024 Léonore All rights reserved.</span><br>Built from <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> &amp; <a href="https://github.com/MannyCooper/hexo-theme-candy" target="_blank" rel="noopener">Candy</a><br>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span><span> , </span><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">0</span> total times</span></p></div><div class="level-item" style="display:flex;justifyContent:center;"><p style="text-align:center"><br><a href="https://ipw.cn/ipv6webcheck/?site=xxiao.org" title="IPv6 support" target="_blank"><img no-lazy style="display:inline-block;vertical-align:middle" alt="IPv6 support" src="https://static.ipw.cn/icon/ipv6-certified-s2.svg"></a><a href="https://ipw.cn/ssl/?site=xxiao.org" title="SSL" target="_blank"><img no-lazy style="justifyContent:center;alignItems:center" alt="SSL" src="https://static.ipw.cn/icon/ssl-s1.svg"></a><br><script>
                             var now = new Date();
                             function createtime() {
                                 var grt= new Date("12/31/2020 23:59:59");
