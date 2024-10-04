@@ -26,7 +26,7 @@ document.addEventListener('visibilitychange', function () {
                 $(this).parent('picture').wrap('<a class="gallery-item"></a>');
             }
             else{
-            $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
+            $(this).wrap('<a class="gallery-item" href="' + ($(this).attr("data-original")?$(this).attr("data-original"):this.src) + '"></a>');
             }
             if (this.alt) {
                 $(this).after('<p class="has-text-centered is-size-6 caption">' + this.alt + '</p>');
