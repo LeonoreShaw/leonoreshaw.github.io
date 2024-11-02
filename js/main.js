@@ -5,12 +5,12 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
         //离开当前页面时标签显示内容
-        document.title =  ' 🥹  w(ﾟДﾟ)w  - ' + OriginTitile;
+        document.title =  ' w(ﾟДﾟ)w  - ' + OriginTitile;
         clearTimeout(titleTime);
     }
     else {
         //返回当前页面时标签显示内容
-        document.title = ' 😎 (^∇^*)  Welcome Back ~' ;
+        document.title = ' (^∇^*)  Welcome Back ~' ;
         //3秒后变回正常标题
         titleTime = setTimeout(function () {
             document.title = OriginTitile;
